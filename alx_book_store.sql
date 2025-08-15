@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS Orders (
     order_id INT PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
-    CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS Order_details (
     quantity DOUBLE NOT NULL,
     INDEX idx_order_details_order_id (order_id),
     INDEX idx_order_details_book_id (book_id),
-    CONSTRAINT fk_order_details_order FOREIGN KEY (order_id) REFERENCES orders(order_id) 
+    CONSTRAINT fk_order_details_order FOREIGN KEY (order_id) REFERENCES Orders(order_id) 
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_order_details_book FOREIGN KEY (book_id) REFERENCES books(book_id) 
+    CONSTRAINT fk_order_details_book FOREIGN KEY (book_id) REFERENCES Books(book_id) 
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
