@@ -1,33 +1,27 @@
-#importing libraries
+""" Creates the database alx_book_store """
 
-import os
-import sys
-import mysql.connector 
+import mysql.connector
 
-
-#database name
-DB_NAME = "alx_book_store"
-
-#
 def main():
-    host = os.getenv("MYSQL_HOST", "localhost")
-    user = os.getenv("MYSQL_USER", "root")
-    password = os.getenv("Mukangu!994", "")
-    port = int(os.getenv("MYSQL_PORT", "3306"))
-
-    conn = None
     try:
-        conn = connect(host=host, user=user, password=password, port=port)
-        conn.autocommit = True
-        with conn.cursor() as cur:
-            cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
-        print(f"Database {DB_NAME} created successfully!")
-    except Error as e:
-        print(f"ERROR: Could not create database {DB_NAME}. Details: {e}")
-        sys.exit(1)
+        # Connect to MySQL server and create the database
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Mukangu!994" 
+        )
+
+        cursor = connection.cursor()
+        cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+        print("Database alx_book_store created successfully!")
+
+    except mysql.connector.Error as e:
+        print(f"Error: {e}")
+
     finally:
-        if conn is not None and conn.is_connected():
-            conn.close()
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
 
 if __name__ == "__main__":
     main()
