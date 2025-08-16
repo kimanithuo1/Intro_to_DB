@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS Orders (
     order_id INT PRIMARY KEY,
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
-    CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
-CREATE TABLE IF NOT EXISTS Order_details (
+CREATE TABLE IF NOT EXISTS Order_Details (
     order_details_id INT PRIMARY KEY,
     order_id  INT NOT NULL,
     book_id INT NOT NULL,
