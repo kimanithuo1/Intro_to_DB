@@ -20,10 +20,10 @@ def main():
         conn = connect(host=host, user=user, password=password, port=port)
         conn.autocommit = True
         with conn.cursor() as cur:
-            cur.execute(f"CREATE DATABASE IF NOT EXISTS `{DB_NAME}`")
-        print(f"Database '{DB_NAME}' created successfully!")
+            cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+        print(f"Database {DB_NAME} created successfully!")
     except Error as e:
-        print(f"ERROR: Could not create database '{DB_NAME}'. Details: {e}")
+        print(f"ERROR: Could not create database {DB_NAME}. Details: {e}")
         sys.exit(1)
     finally:
         if conn is not None and conn.is_connected():
