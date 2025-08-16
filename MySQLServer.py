@@ -2,7 +2,7 @@
 
 import os
 import sys
-from mysql.connector import connect, Error
+import mysql.connector 
 
 
 #database name
